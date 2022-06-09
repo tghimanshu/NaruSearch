@@ -14,8 +14,8 @@ app.use(cors());
 app.use(morgan("dev"));
 
 /* Routes */
-app.use(authRoutes);
-app.get("/*", (req, res) => {
+app.use("/api", authRoutes);
+app.get("/api/", (req, res) => {
   res.status(404).json({
     success: false,
     body: "Page Not Found",

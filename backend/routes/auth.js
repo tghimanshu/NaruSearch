@@ -119,6 +119,25 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.get("/:id", authMiddleWare, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id })
+      .select("-password -_v")
+      .exec();
+    if (!user)
+      return res.status(404).json({ success: false, body: "User Not Found" });
+    return res.json({
+      success: true,
+      body: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      body: error.message,
+    });
+  }
+});
+
 router.get("/", authMiddleWare, (req, res) => {
   res.send("Hello");
 });

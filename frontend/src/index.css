@@ -5,7 +5,7 @@
   min-height: 100vh;
   overflow-x: hidden;
   background: url(https://i.pinimg.com/videos/thumbnails/originals/01/8a/ee/018aee955e0a7b5eb6c9c30ef9ad7ba9.0000000.jpg)
-    no-repeat top center/cover;
+    no-repeat top right/cover;
   background-attachment: fixed;
   color: white;
 }
@@ -32,4 +32,9 @@
   backdrop-filter: blur(10px);
   transition: all 0.4s ease;
   background-position-x: 100%;
+}
+
+.formErrors {
+  color: rgba(234, 152, 40, 1);
+  font-weight: bold;
 }
