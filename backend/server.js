@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 const authRoutes = require("./routes/auth");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const app = express();
@@ -14,8 +15,11 @@ app.use(morgan("dev"));
 
 /* Routes */
 app.use(authRoutes);
-app.get("/", (req, res) => {
-  res.send("Hello");
+app.get("/*", (req, res) => {
+  res.status(404).json({
+    success: false,
+    body: "Page Not Found",
+  });
 });
 
 /* MongoDB Connection */
