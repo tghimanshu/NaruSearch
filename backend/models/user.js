@@ -1,27 +1,44 @@
 const mongoose = require("mongoose");
+const Joi = require("joi");
 
 const userSchema = mongoose.Schema(
   {
     firstName: {
-      type: Text,
+      type: String,
       required: true,
     },
     lastName: {
-      type: Text,
+      type: String,
       required: true,
     },
     email: {
-      type: Text,
+      type: String,
       required: true,
     },
     password: {
-      type: Text,
+      type: String,
       required: true,
     },
   },
-  { timeStamps: true }
+  { timestamps: true }
 );
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+const validateUser = Joi.object({
+  firstName: Joi.string().min(2).required(),
+  lastName: Joi.string().min(2).required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(3).required(),
+});
+
+const validateLogin = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().min(3).required(),
+});
+
+module.exports = {
+  User,
+  validateUser,
+  validateLogin,
+};
