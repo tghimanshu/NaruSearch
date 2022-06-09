@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -20,6 +21,10 @@ app.get("/api/", (req, res) => {
     success: false,
     body: "Page Not Found",
   });
+});
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/", "index.html"));
 });
 
 /* MongoDB Connection */
