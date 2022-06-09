@@ -1,0 +1,35 @@
+.registerPage {
+  height: 100vh;
+}
+
+.registerPage h1 {
+  font-family: "Rock Salt", cursive;
+  background: linear-gradient(
+    135deg,
+    rgba(106, 13, 173, 1),
+    rgba(234, 152, 40, 1)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+.registerPage .card {
+  background: linear-gradient(
+    135deg,
+    rgba(106, 13, 173, 0.3),
+    rgba(234, 152, 40, 0.3)
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 14px 1px rgba(255, 255, 255, 0.4);
+}
+.registerPage input {
+  background-color: transparent;
+  color: white;
+}
+
+.registerPage input:hover,
+.registerPage input:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: 10px;
+}

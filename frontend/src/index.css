@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: url(https://i.pinimg.com/videos/thumbnails/originals/01/8a/ee/018aee955e0a7b5eb6c9c30ef9ad7ba9.0000000.jpg)
+    no-repeat top center/cover;
+  background-attachment: fixed;
+  color: white;
+}
+.btn-success {
+  background: linear-gradient(
+    135deg,
+    rgba(106, 13, 173, 0.5),
+    rgba(234, 152, 40, 0.5),
+    rgba(106, 13, 173, 0.5)
+  );
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+  background-size: 200% 100%;
+}
+
+.btn-success:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(106, 13, 173, 0.5),
+    rgba(234, 152, 40, 0.5),
+    rgba(106, 13, 173, 0.5)
+  );
+  background-size: 200% 100%;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+  background-position-x: 100%;
+}
