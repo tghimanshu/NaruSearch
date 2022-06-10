@@ -16,13 +16,10 @@ app.use(morgan("dev"));
 
 /* Routes */
 app.use("/api", authRoutes);
-app.get("/api/", (req, res) => {
-  res.status(404).json({
-    success: false,
-    body: "Page Not Found",
-  });
-});
+
+/* Serving build folder as static */
 app.use(express.static(path.join(__dirname, "../frontend/build")));
+/* Serving Frontend */
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build/", "index.html"));
 });

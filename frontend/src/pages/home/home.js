@@ -8,21 +8,20 @@ const Home = () => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
   useEffect(() => {
-    try {
-      if (!localStorage.getItem("token")) navigate("/login");
-      const getUser = async () => {
+    if (!localStorage.getItem("token")) navigate("/login");
+    const getUser = async () => {
+      try {
         const data = jwtDecode(localStorage.getItem("token"));
         const res = await axios.get(`/api/${data.id}`, {
           headers: { "auth-token": localStorage.getItem("token") },
         });
         setUser(res.data.body);
-      };
+      } catch (error) {
+        navigate("/login");
+      }
+    };
 
-      getUser();
-    } catch (error) {
-      console.log(error);
-      navigate("/login");
-    }
+    getUser();
   }, []);
   return (
     <div className="jsonContainer d-flex justify-content-center align-items-center">

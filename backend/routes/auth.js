@@ -122,7 +122,7 @@ router.post("/register", async (req, res) => {
 router.get("/:id", authMiddleWare, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.id })
-      .select("-password -_v")
+      .select("-password -__v")
       .exec();
     if (!user)
       return res.status(404).json({ success: false, body: "User Not Found" });
@@ -139,7 +139,10 @@ router.get("/:id", authMiddleWare, async (req, res) => {
 });
 
 router.get("/", authMiddleWare, (req, res) => {
-  res.send("Hello");
+  res.status(404).json({
+    success: false,
+    body: "Page Not Found",
+  });
 });
 
 module.exports = router;

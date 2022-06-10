@@ -1,0 +1,12 @@
+.notFoundContainer {
+  height: 100vh;
+}
+.notFound {
+  background: linear-gradient(
+    135deg,
+    rgba(106, 13, 173, 0.3),
+    rgba(234, 152, 40, 0.3)
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 14px 1px rgba(255, 255, 255, 0.4);
+}

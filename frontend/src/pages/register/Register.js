@@ -29,7 +29,7 @@ function RegisterPage() {
       localStorage.setItem("token", res.headers["auth-token"]);
       setTimeout(() => navigate("/"), 3000);
     } catch (error) {
-      setError(error.response.data.body);
+      setError(error.response.data.body || error.response.statusText);
       setTimeout(() => setError(""), 3000);
     }
   };

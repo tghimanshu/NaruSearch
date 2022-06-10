@@ -9,6 +9,13 @@
   background-attachment: fixed;
   color: white;
 }
+a,
+.btn-link {
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: none;
+}
 .btn-success {
   background: linear-gradient(
     135deg,
@@ -21,7 +28,8 @@
   background-size: 200% 100%;
 }
 
-.btn-success:hover {
+.btn-success:hover,
+.btn-success:focus {
   background: linear-gradient(
     135deg,
     rgba(106, 13, 173, 0.5),
@@ -37,4 +45,29 @@
 .formErrors {
   color: rgba(234, 152, 40, 1);
   font-weight: bold;
+}
+
+.alert-danger {
+  background: linear-gradient(
+    135deg,
+    rgba(240, 0, 0, 0.4) 0%,
+    rgba(240, 0, 0, 0.4) 40%,
+    rgba(240, 240, 240, 0.1) 50%,
+    rgba(240, 0, 0, 0.4) 60%,
+    rgba(240, 0, 0, 0.4) 100%
+  );
+  backdrop-filter: blur(10px);
+  color: white;
+}
+.alert-success {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 240, 0, 0.4) 0%,
+    rgba(0, 240, 0, 0.4) 40%,
+    rgba(240, 240, 240, 0.1) 50%,
+    rgba(240, 240, 0, 0.4) 60%,
+    rgba(0, 240, 0, 0.4) 100%
+  );
+  backdrop-filter: blur(10px);
+  color: white;
 }
