@@ -5,6 +5,14 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./Login.css";
 
+/**
+ * Login page component.
+ * Allows users to log in with their email and password.
+ * Handles form validation and API communication.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered login page component.
+ */
 function LoginPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -14,6 +22,15 @@ function LoginPage() {
     register,
     formState: { errors },
   } = useForm();
+
+  /**
+   * Handles user login submission.
+   * Sends a POST request to the login API.
+   * On success, stores the token and redirects to the home page.
+   * On failure, displays an error message.
+   *
+   * @param {Object} data - The form data containing email and password.
+   */
   const registerUser = async (data) => {
     try {
       const res = await axios.post("/api/login", data);

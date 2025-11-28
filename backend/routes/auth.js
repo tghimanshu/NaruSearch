@@ -4,7 +4,15 @@ const { hashPassword, comparePassword } = require("../utils/authUtils");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-/* Auth Middleware */
+/**
+ * Middleware function to authenticate requests using a JWT.
+ * It checks for the 'auth-token' header, verifies the token, and attaches the user ID to the request object.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {Object|void} Returns a 402 or 500 response if authentication fails, otherwise calls next().
+ */
 function authMiddleWare(req, res, next) {
   try {
     // If token exists
@@ -23,6 +31,18 @@ function authMiddleWare(req, res, next) {
   next();
 }
 
+/**
+ * Route to log in a user.
+ * Validates the login details, checks if the user exists, compares the password,
+ * updates the last login time, and returns a JWT token.
+ *
+ * @name POST /login
+ * @function
+ * @async
+ * @param {Object} req - The request object containing email and password in the body.
+ * @param {Object} res - The response object.
+ * @returns {Object} JSON response with the user data and auth token in header if successful, or error message.
+ */
 router.post("/login", async (req, res) => {
   try {
     //   Validation request body
@@ -73,6 +93,18 @@ router.post("/login", async (req, res) => {
   }
 });
 
+/**
+ * Route to register a new user.
+ * Validates the user details, checks if the email is already registered,
+ * hashes the password, creates a new user, and returns a JWT token.
+ *
+ * @name POST /register
+ * @function
+ * @async
+ * @param {Object} req - The request object containing user details in the body.
+ * @param {Object} res - The response object.
+ * @returns {Object} JSON response with the new user data and auth token in header if successful, or error message.
+ */
 router.post("/register", async (req, res) => {
   try {
     //   Validation request body
@@ -119,6 +151,17 @@ router.post("/register", async (req, res) => {
   }
 });
 
+/**
+ * Route to get user details by ID.
+ * Requires authentication.
+ *
+ * @name GET /:id
+ * @function
+ * @async
+ * @param {Object} req - The request object containing the user ID in params.
+ * @param {Object} res - The response object.
+ * @returns {Object} JSON response with the user data if found, or error message.
+ */
 router.get("/:id", authMiddleWare, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.id })
@@ -138,6 +181,17 @@ router.get("/:id", authMiddleWare, async (req, res) => {
   }
 });
 
+/**
+ * Default route for the auth router.
+ * Returns a 404 "Page Not Found" error.
+ * Requires authentication.
+ *
+ * @name GET /
+ * @function
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Object} JSON response with "Page Not Found" message.
+ */
 router.get("/", authMiddleWare, (req, res) => {
   res.status(404).json({
     success: false,

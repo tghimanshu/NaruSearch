@@ -5,6 +5,13 @@ import Home from "./pages/home/home";
 import LoginPage from "./pages/login/Login";
 import RegisterPage from "./pages/register/Register";
 
+/**
+ * Main application component.
+ * Sets up routing for the application using React Router.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered application component.
+ */
 const App = () => {
   return (
     <BrowserRouter>

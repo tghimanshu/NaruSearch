@@ -4,6 +4,14 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./Register.css";
 
+/**
+ * Register page component.
+ * Allows new users to sign up by providing their details.
+ * Handles form validation and API communication.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered register page component.
+ */
 function RegisterPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -14,6 +22,14 @@ function RegisterPage() {
     formState: { errors },
   } = useForm();
 
+  /**
+   * Handles user registration submission.
+   * Validates passwords match, then sends a POST request to the register API.
+   * On success, stores the token and redirects to the home page.
+   * On failure, displays an error message.
+   *
+   * @param {Object} data - The form data containing user details.
+   */
   const registerUser = async (data) => {
     try {
       if (data.password !== data.confirmPassword) {
